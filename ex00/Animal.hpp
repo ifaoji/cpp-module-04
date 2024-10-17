@@ -10,7 +10,7 @@ public:
   Animal();
   Animal(const Animal &other);
 
-  ~Animal();
+  virtual ~Animal();
 
   Animal &operator=(const Animal &rhs);
 
