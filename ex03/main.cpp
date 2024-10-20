@@ -172,6 +172,39 @@ int main() {
   }
 
   {
+    PrintHeader("Use Invalid Materia");
+
+    IMateriaSource *src = new MateriaSource();
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+
+    ICharacter *me = new Character("me");
+
+    me->equip(src->createMateria("ice"));
+    me->equip(src->createMateria("cure"));
+    AMateria *tmp = src->createMateria("ice");
+    me->equip(tmp);
+
+    ICharacter *bob = new Character("bob");
+
+    me->use(0, *bob);
+    me->use(1, *bob);
+    me->use(2, *bob);
+    me->use(3, *bob);
+
+    me->unequip(2);
+    me->use(2, *bob);
+
+    me->equip(src->createMateria("ice"));
+    me->use(2, *bob);
+
+    delete src;
+    delete bob;
+    delete me;
+    delete tmp;
+  }
+
+  {
     PrintHeader("Subject");
 
     IMateriaSource *src = new MateriaSource();
