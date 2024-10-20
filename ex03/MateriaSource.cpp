@@ -37,9 +37,14 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &rhs) {
 }
 
 void MateriaSource::learnMateria(AMateria *materia) {
-  std::size_t templates_len = 0;
+  if (materia == NULL)
+    return;
 
+  std::size_t templates_len = 0;
   for (; templates_len < kTemplatesCapacity; templates_len++) {
+    if (templates_[templates_len] == materia)
+      return;
+
     if (templates_[templates_len] == NULL)
       break;
   }
