@@ -46,7 +46,7 @@ Character &Character::operator=(const Character &rhs) {
 
     delete inventory_[i];
 
-    inventory_[i] = rhs.inventory_[i];
+    inventory_[i] = rhs.inventory_[i]->clone();
   }
 
   return *this;
