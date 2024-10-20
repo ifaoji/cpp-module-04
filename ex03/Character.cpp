@@ -55,9 +55,15 @@ Character &Character::operator=(const Character &rhs) {
 std::string const &Character::getName() const { return name_; }
 
 void Character::equip(AMateria *materia) {
+  if (materia == NULL)
+    return;
+
   std::size_t inventory_len = 0;
 
   for (; inventory_len < kInventoryCapacity; inventory_len++) {
+    if (inventory_[inventory_len] == materia)
+      return;
+
     if (inventory_[inventory_len] == NULL)
       break;
   }
